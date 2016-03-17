@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko" ng-app="myApp">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="bootstrap.css" />
+  <link rel="stylesheet" href="bootstrap-theme.css" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="angular.js"></script>
+  <script src="angular-resource.js"></script>
+  <script src="dirPagination.js"></script>
+  <script src="script.js"></script>
+</head>
+
+<body>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12" ng-controller="MyController" >
+      <h1>맛있는 메뉴 만들기</h1>
+      <div class="row">
+        <div class="col-xs-3">
+          <h3>페이지: {{ currentPage }}</h3>
+        </div>
+        <div class="col-xs-7">
+          <label>검색:</label>
+          <input placeholder="키워드를 입력하세요..." class="form-control" ng-model="q" >
+        </div>
+        <div class="col-xs-2">
+          <label>페이지 당 항목 수:</label>
+          <input type="number" min="1" max="100" class="form-control" ng-model="pageSize">
+        </div>
+      </div>
+      <br>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <ul>
+            <li dir-paginate="meal in meals | filter:q | itemsPerPage: pageSize" total-items="totalCount" current-page="currentPage">
+              {{ meal }}
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="text-center">
+        <dir-pagination-controls max-size="15"
+                                 direction-links="true"
+                                 boundary-links="true"
+                                 on-page-change="pageChanged(currentPage)"
+                                 template-url="dirPagination.tpl.html">
+        </dir-pagination-controls>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+
+</html>
