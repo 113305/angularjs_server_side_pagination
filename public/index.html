@@ -34,6 +34,7 @@
       <div class="panel panel-default">
         <div class="panel-body">
           <ul>
+            <!--ng-repeat의기능을 자체적으로 갖고있음 imtemsPerPage중요 pageSize는 script.js에 있음-->
             <li dir-paginate="meal in meals | filter:q | itemsPerPage: pageSize" total-items="totalCount" current-page="currentPage">
               {{ meal }}
             </li>
@@ -41,6 +42,7 @@
         </div>
       </div>
       <div class="text-center">
+        <!--dir-pagination-controls와 dir-paginate 연결되어있음-->
         <dir-pagination-controls max-size="15"
                                  direction-links="true"
                                  boundary-links="true"
