@@ -2,13 +2,9 @@ angular.module('myApp', ['angularUtils.directives.dirPagination'])
 	.constant('mealsUrl', 'http://localhost:3000/meals/')
 	.controller('MyController', function($scope, $http, $log, mealsUrl) {
 		$scope.pageSize = 5;
-		$scope.pageNo = 1;
 		$scope.totalCount = 0;
 		$scope.currentPage = 1;
 
-		$scope.pagination = {
-			current: 1
-		};
 
 		var getResultsPage = function(pageNo) {
 			$log.log("getResultsPage: " + pageNo + "");
@@ -40,5 +36,5 @@ angular.module('myApp', ['angularUtils.directives.dirPagination'])
 			getResultsPage(newPage);
 		};
 
-		getResultsPage($scope.pageNo);
-	});;
+		getResultsPage($scope.currentPage);
+	});
